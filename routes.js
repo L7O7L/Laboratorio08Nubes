@@ -48,7 +48,7 @@ router.post('/create', async(req, res) => {
     const { success, data } = await createOrUpdate(product)
 
     if(success){
-        return res.json({success, data})
+        return res.redirect('/crud')
     }
 
     return res.status(500).json({success: false, message: 'Error'})
