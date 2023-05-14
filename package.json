@@ -1,0 +1,20 @@
+{
+  "name": "lab08nubes",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Laboratorio 08 de Nubes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Baltazar Segura",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1377.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
