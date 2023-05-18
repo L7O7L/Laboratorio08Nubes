@@ -1,63 +1,78 @@
-import {db, Table} from './db.config.js'
+import { db, Table } from './db.config.js'
+import { DeleteItemCommand, GetItemCommand, PutItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb'
+import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 
-const createOrUpdate = async (data = {}) =>{
-    const params = {
-        TableName: Table,
-        Item: data
-    }
+const createOrUpdate = async (event) => {
 
-    try{
-        await db.put(params).promise()
+    try {
+
+        const requestBody = event;
+        const params = {
+            TableName: Table,
+            Item: marshall(requestBody || {})
+        }
+
+        const response = await db.send(new PutItemCommand(params));
+
         return { success: true }
-    } catch(error){
-        return { success: false, error: error}
+
+    } catch (error) {
+        console.log(error)
+        return { success: false, error: error }
     }
 }
 
-const readAllProducts = async()=>{
+const readAllProducts = async () => {
+
     const params = {
         TableName: Table
     }
 
-    try{
-        const { Items = [] } = await db.scan(params).promise()
-        return { success: true, data: Items }
+    try {
+        const { Items } = await db.send(new ScanCommand(params))
+        const products = (Items) ? Items.map((item) => unmarshall(item)) : {}
+        return { success: true, data: products }
 
-    } catch(error){
+    } catch (error) {
+        console.log(error)
         return { success: false, data: null }
     }
 
 }
 
-const getProductById = async (value, key = 'id') => {
+const getProductById = async (productId) => {
     const params = {
         TableName: Table,
-        Key: {
-            [key]: parseInt(value)
-        }
+        Key: marshall({ id:  productId})
     }
     try {
-        const { Item = {} } =  await db.get(params).promise()
-        return { success: true, data: Item }
+        const { Item } = await db.send(new GetItemCommand(params))
+
+        const product = (Item) ? unmarshall(Item) : {};
+
+        return { success: true, data: product }
     } catch (error) {
-        return {  success: false, data: null}        
+        console.log(error)
+        return { success: false, data: null }
     }
 }
 
-const deleteProductById = async(value, key = 'id' ) => { 
+const deleteProductById = async (productId) => {
     const params = {
         TableName: Table,
-        Key: {
-            [key]: parseInt(value)
-        }
+        Key: marshall({ id: productId })
     }
-        
+
     try {
-        await db.delete(params).promise()
-        return {  success: true }
+        const { Item } = await db.send(new DeleteItemCommand(params))
+        
+        const deletedProduct = (Item) ? unmarshall(Item) : {};
+
+        return { success: true }
 
     } catch (error) {
-        return{ success: false }
+        console.log(error)
+        return { success: false }
     }
 }
 

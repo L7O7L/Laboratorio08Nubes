@@ -1,13 +1,6 @@
-import AWS from 'aws-sdk'
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
 
-AWS.config.update({
-    region: "us-east-2",
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-})
-
-const db = new AWS.DynamoDB.DocumentClient()
-
+const db = new DynamoDBClient({ region: "us-east-2" })
 const Table = 'Productos'
 
 export {

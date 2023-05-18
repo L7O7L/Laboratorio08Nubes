@@ -95,25 +95,23 @@
 
 <body style="height: 100vh;">
 
-    <div class="cover-container d-flex w-100 h-100 p-5 mx-auto flex-column">
-        <header class="mb-auto">
+    <div class="cover-container d-flex w-100 h-10 p-5 flex-column">
+        <header class="mb-auto" id="header">
             <div>
-                <h3 class="float-md-start mb-0">Nubes - Baltazar Segura Luis</h3>
+                <h5 class="float-md-start" style="margin-right: 25rem;">Lab 09 - L. Baltazar</h5>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">Inicio</a>
-                    <a class="nav-link fw-bold py-1 px-0" href="/crud">Crud</a>
+                    <a class="nav-link fw-bold py-1 px-0 " href="/crud">Crud</a>
                     <a class="nav-link fw-bold py-1 px-0 active" href="/registrar">Registrar Producto</a>
                 </nav>
             </div>
         </header>
+        <hr style="width: 65rem;">
+        <main style="text-align: center; justify-content: center; align-content: center; display: contents;">
 
-        <main class="px-3" style="padding-bottom: 8vh;">
+            <h3 class="py-5">Registrar Producto</h3>
 
-            <h4>Registrar Producto</h4>
-
-            <hr class="my-4">
-
-            <form action="/create" method="POST">
+            <form action="/create" method="POST" style="text-align: left; width: 30rem">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="id" class="form-label">Id</label>
@@ -122,36 +120,31 @@
 
                     <div class="col-sm-6">
                         <label for="producto" class="form-label">Producto</label>
-                        <input type="text" class="form-control" id="producto"
-                            name="producto" required="">
+                        <input type="text" class="form-control" id="producto" name="producto" required="">
                     </div>
 
                     <div class="col-12">
                         <label for="marca" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="marca" name="marca"
-                            required="">
+                        <input type="text" class="form-control" id="marca" name="marca" required="">
                     </div>
 
                     <div class="col-12">
                         <label for="stock" class="form-label">Stock</label>
-                        <input type="text" class="form-control" id="stock" name="stock"
-                            required="">
+                        <input type="text" class="form-control" id="stock" name="stock" required="">
                     </div>
 
                     <div class="col-12">
                         <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" name="precio"
-                            required="">
+                        <input type="number" class="form-control" id="precio" name="precio" required="" step="any">
 
                     </div>
 
                 </div>
                 <br>
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Subir Cambios</button>
+                <button class="w-100 btn btn-secondary" type="submit">Subir Cambios</button>
             </form>
 
         </main>
-
     </div>
 
 </body>

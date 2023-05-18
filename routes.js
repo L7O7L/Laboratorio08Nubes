@@ -21,7 +21,10 @@ router.get('/registrar', async(req, res) => {
 router.get('/product/:id', async(req, res) => {
 
     const { id } = req.params
-    const { success, data } = await getProductById(id)
+
+    const productId = parseInt(id)
+
+    const { success, data } = await getProductById(productId)
 
     if(success){
         return res.render('editar', {data: data})
@@ -79,11 +82,16 @@ router.post('/edit/product', async(req, res) => {
     return res.status(500).json({success: false, message: "Error"})
 })
 
-router.delete('/delete/product/:id', async (req, res) => {
+router.get('/delete/product/:id', async (req, res) => {
+
     const { id } = req.params
-    const { success, data } = await deleteProductById(id)
+
+    const productId = parseInt(id)
+
+    const { success, data } = await deleteProductById(productId)
+
     if (success) {
-      return res.json({ success, data })
+      return res.redirect('/crud')
     }
     return res.status(500).json({ success: false, message: 'Error'})
 })

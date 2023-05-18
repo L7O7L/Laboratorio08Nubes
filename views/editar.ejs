@@ -95,25 +95,25 @@
 
 <body style="height: 100vh;">
 
-    <div class="cover-container d-flex w-100 h-100 p-5 mx-auto flex-column">
-        <header class="mb-auto">
+    <div class="cover-container d-flex w-100 h-10 p-5 flex-column">
+        <header class="mb-auto" id="header">
             <div>
-                <h3 class="float-md-start mb-0">Nubes - Baltazar Segura Luis</h3>
+                <h5 class="float-md-start" style="margin-right: 25rem;">Lab 09 - L. Baltazar</h5>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Inicio</a>
+                    <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">Inicio</a>
                     <a class="nav-link fw-bold py-1 px-0" href="/crud">Crud</a>
                     <a class="nav-link fw-bold py-1 px-0" href="/registrar">Registrar Producto</a>
                 </nav>
             </div>
         </header>
+        <hr style="width: 65rem;">
+        <main style="display: contents;">
 
-        <main class="px-3" style="padding-bottom: 8vh;">
+            <h3 class="py-5">Editar Producto</h3>
 
-            <h4 class="mb-3">Editar Producto</h4>
-            <hr class="my-4">
             <% if (data) { %>
 
-                <form action="/edit/product" method="POST">
+                <form action="/edit/product" method="POST" style="text-align: left; width: 50rem">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="id" class="form-label">Id</label>
@@ -134,20 +134,20 @@
 
                         <div class="col-12">
                             <label for="stock" class="form-label">Stock</label>
-                            <input type="text" class="form-control" value="<%= data.stock %>" id="stock" name="stock"
+                            <input type="number" class="form-control" value="<%= data.stock %>" id="stock" name="stock"
                                 required="">
                         </div>
 
                         <div class="col-12">
                             <label for="precio" class="form-label">Precio</label>
                             <input type="number" class="form-control" value="<%= data.precio %>" id="precio"
-                                name="precio" required="">
+                                name="precio" required="" step="any">
 
                         </div>
 
                     </div>
 
-                    <hr class="my-4">
+                    <br>
 
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Subir Cambios</button>
                 </form>
@@ -155,7 +155,6 @@
                 <% } %>
 
         </main>
-
     </div>
 
 </body>
