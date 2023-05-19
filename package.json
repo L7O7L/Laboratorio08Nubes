@@ -5,7 +5,8 @@
   "description": "Laboratorio 08 de Nubes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "author": "Luis Baltazar Segura",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
     "nodemon": "^2.0.22"
   }
 }

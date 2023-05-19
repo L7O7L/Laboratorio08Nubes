@@ -14,6 +14,8 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="../css/cover.css">
 
     <style>
@@ -113,7 +115,7 @@
 
             <% if (data) { %>
 
-                <form action="/edit/product" method="POST" style="text-align: left; width: 50rem">
+                <form action="/edit/product" method="POST" style="text-align: left; width: 50rem" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="id" class="form-label">Id</label>
@@ -121,15 +123,20 @@
                         </div>
 
                         <div class="col-sm-6">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" class="form-control" value="<%= data.marca %>" id="marca" name="marca"
+                                required="">
+                        </div>
+
+                        <div class="col-12">
                             <label for="producto" class="form-label">Producto</label>
                             <input type="text" class="form-control" value="<%= data.producto %>" id="producto"
                                 name="producto" required="">
                         </div>
-
+                        <img src="" alt="">
                         <div class="col-12">
-                            <label for="marca" class="form-label">Marca</label>
-                            <input type="text" class="form-control" value="<%= data.marca %>" id="marca" name="marca"
-                                required="">
+                            <label for="img" class="form-label">Referencia del Producto (img)</label>
+                            <input type="file" class="form-control" value="<%= data.img %>" id="img" name="img" required="">
                         </div>
 
                         <div class="col-12">
@@ -149,7 +156,7 @@
 
                     <br>
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Subir Cambios</button>
+                    <button class="w-100 btn btn-secondary" type="submit">Subir Cambios</button>
                 </form>
 
                 <% } %>
