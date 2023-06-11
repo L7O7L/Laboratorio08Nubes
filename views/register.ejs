@@ -100,18 +100,18 @@
     <div class="cover-container d-flex w-100 h-10 p-5 flex-column">
         <header class="mb-auto" id="header">
             <div>
-                <h5 class="float-md-start" style="margin-right: 25rem;">Lab 11 - L. Baltazar</h5>
+                <h5 class="float-md-start" style="margin-right: 25rem;">Examen TEO 03 - L. Baltazar</h5>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">Inicio</a>
                     <a class="nav-link fw-bold py-1 px-0 " href="/crud">Crud</a>
-                    <a class="nav-link fw-bold py-1 px-0 active" href="/registrar">Registrar Producto</a>
+                    <a class="nav-link fw-bold py-1 px-0 active" href="/registrar">Registrar Estudiante</a>
                 </nav>
             </div>
         </header>
         <hr style="width: 65rem;">
         <main style="text-align: center; justify-content: center; align-content: center; display: contents;">
 
-            <h3 class="py-4">Registrar Producto</h3>
+            <h3 class="py-4">Registrar Estudiante</h3>
 
             <form action="/create" method="POST" style="text-align: left; width: 28rem" enctype="multipart/form-data">
                 <div class="row g-3">
@@ -121,28 +121,28 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="marca" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="marca" name="marca" required="">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required="">
                     </div>
 
                     <div class="col-12">
-                        <label for="producto" class="form-label">Producto</label>
-                        <input type="text" class="form-control" id="producto" name="producto" required="">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required="">
                     </div>
                     
                     <div class="col-12">
-                        <label for="img" class="form-label">Referencia del Producto (img)</label>
-                        <input type="file" class="form-control" id="img" name="img" required="">
+                        <label for="fecha_nac" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required="">
                     </div>
 
                     <div class="col-12">
-                        <label for="stock" class="form-label">Stock</label>
-                        <input type="text" class="form-control" id="stock" name="stock" required="">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required="">
                     </div>
 
                     <div class="col-12">
-                        <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" name="precio" required="" step="any">
+                        <label for="img" class="form-label">Foto de Perfil</label>
+                        <input type="file" class="form-control" id="img" name="img" required="" step="any">
 
                     </div>
 

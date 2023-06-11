@@ -1,11 +1,11 @@
 import express from 'express'
-import { createOrUpdate, deleteProductById, getProductById, readAllProducts } from './db.js'
+import { createOrUpdate, deleteStudentById, getStudentById, readAllStudents } from './db.js'
 import { uploadFile, getFiles, getFile, downloadFile } from './s3.js'
 
 const router = express.Router()
 
 router.get('/crud', async (req, res) => {
-    const { success, data } = await readAllProducts()
+    const { success, data } = await readAllStudents()
 
     if (success) {
         return res.render('crud', { data: data })
@@ -19,13 +19,13 @@ router.get('/registrar', async (req, res) => {
 
 })
 
-router.get('/product/:id', async (req, res) => {
+router.get('/student/:id', async (req, res) => {
 
     const { id } = req.params
 
-    const productId = parseInt(id)
+    const estudentId = parseInt(id)
 
-    const { success, data } = await getProductById(productId)
+    const { success, data } = await getStudentById(estudentId)
 
     if (success) {
         return res.render('editar', { success: false, data: data })
@@ -37,29 +37,29 @@ router.get('/product/:id', async (req, res) => {
 router.post('/create', async (req, res) => {
 
     const id = req.body.id
-    const producto = req.body.producto
-    const marca = req.body.marca
-    const stock = req.body.stock
-    const precio = req.body.precio
+    const nombre = req.body.nombre
+    const apellido = req.body.apellido
+    const fecha_nac = req.body.fecha_nac
+    const email = req.body.email
     const img = req.files
 
     const results = JSON.parse(JSON.stringify(img))
     var {img: {name: Name}} = results
     console.log(results.img)
 
-    const product = req.body
-    product.id = parseInt(id) 
-    product.producto = producto
-    product.marca = marca
-    product.stock = stock
-    product.precio = precio
-    product.img = Name
+    const student = req.body
+    student.id = parseInt(id) 
+    student.nombre = nombre
+    student.apellido = apellido
+    student.fecha_nac = fecha_nac
+    student.email = email
+    student.img = Name
 
     await uploadFile(results.img)
 
     await downloadFile(Name)
 
-    const { success, data } = await createOrUpdate(product)
+    const { success, data } = await createOrUpdate(student)
 
     if (success) {
         return res.redirect('/crud')
@@ -68,13 +68,13 @@ router.post('/create', async (req, res) => {
     return res.status(500).json({ success: false, message: 'Error' })
 })
 
-router.post('/edit/product', async (req, res) => {
+router.post('/edit/student', async (req, res) => {
 
     const id = req.body.id
-    const producto = req.body.producto
-    const marca = req.body.marca
-    const stock = req.body.stock
-    const precio = req.body.precio
+    const nombre = req.body.nombre
+    const apellido = req.body.apellido
+    const fecha_nac = req.body.fecha_nac
+    const email = req.body.email
     const img = req.files
 
     console.log(img)
@@ -83,20 +83,20 @@ router.post('/edit/product', async (req, res) => {
     var {img: {name: Name}} = results
     console.log(results.img)
 
-    const product = req.body
+    const student = req.body
 
-    product.id = parseInt(id)
-    product.producto = producto
-    product.marca = marca
-    product.stock = stock
-    product.precio = precio
-    product.img = Name
+    student.id = parseInt(id) 
+    student.nombre = nombre
+    student.apellido = apellido
+    student.fecha_nac = fecha_nac
+    student.email = email
+    student.img = Name
 
     await uploadFile(results.img)
 
     await downloadFile(Name)
 
-    const { success, data } = await createOrUpdate(product)
+    const { success, data } = await createOrUpdate(student)
 
     if (success) {
         return res.redirect('/crud')
@@ -105,13 +105,13 @@ router.post('/edit/product', async (req, res) => {
     return res.status(500).json({ message: "Error" })
 })
 
-router.get('/delete/product/:id', async (req, res) => {
+router.get('/delete/student/:id', async (req, res) => {
 
     const { id } = req.params
 
-    const productId = parseInt(id)
+    const studentId = parseInt(id)
 
-    const { success, data } = await deleteProductById(productId)
+    const { success, data } = await deleteStudentById(studentId)
 
     console.log(success)
 

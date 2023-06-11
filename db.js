@@ -22,7 +22,7 @@ const createOrUpdate = async (event) => {
     }
 }
 
-const readAllProducts = async () => {
+const readAllStudents = async () => {
 
     const params = {
         TableName: Table
@@ -30,8 +30,8 @@ const readAllProducts = async () => {
 
     try {
         const { Items } = await db.send(new ScanCommand(params))
-        const products = (Items) ? Items.map((item) => unmarshall(item)) : {}
-        return { success: true, data: products }
+        const students = (Items) ? Items.map((item) => unmarshall(item)) : {}
+        return { success: true, data: students }
 
     } catch (error) {
         console.log(error)
@@ -40,33 +40,33 @@ const readAllProducts = async () => {
 
 }
 
-const getProductById = async (productId) => {
+const getStudentById = async (studentId) => {
     const params = {
         TableName: Table,
-        Key: marshall({ id:  productId})
+        Key: marshall({ id:  studentId})
     }
     try {
         const { Item } = await db.send(new GetItemCommand(params))
 
-        const product = (Item) ? unmarshall(Item) : {};
+        const student = (Item) ? unmarshall(Item) : {};
 
-        return { success: true, data: product }
+        return { success: true, data: student }
     } catch (error) {
         console.log(error)
         return { success: false, data: null }
     }
 }
 
-const deleteProductById = async (productId) => {
+const deleteStudentById = async (studentId) => {
     const params = {
         TableName: Table,
-        Key: marshall({ id: productId })
+        Key: marshall({ id: studentId })
     }
 
     try {
         const { Item } = await db.send(new DeleteItemCommand(params))
         
-        const deletedProduct = (Item) ? unmarshall(Item) : {};
+        const deletedStudent = (Item) ? unmarshall(Item) : {};
 
         return { success: true }
 
@@ -79,7 +79,7 @@ const deleteProductById = async (productId) => {
 
 export {
     createOrUpdate,
-    readAllProducts,
-    getProductById,
-    deleteProductById
+    readAllStudents,
+    getStudentById,
+    deleteStudentById
 }

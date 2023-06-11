@@ -98,53 +98,53 @@
     <div class="cover-container d-flex w-100 h-10 p-5 flex-column">
         <header class="mb-auto" id="header">
             <div>
-                <h5 class="float-md-start" style="margin-right: 25rem;">Lab 11 - L. Baltazar</h5>
+                <h5 class="float-md-start" style="margin-right: 25rem;">Examen TEO 03 - L. Baltazar</h5>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">Inicio</a>
                     <a class="nav-link fw-bold py-1 px-0 active" href="/crud">Crud</a>
-                    <a class="nav-link fw-bold py-1 px-0" href="/registrar">Registrar Producto</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/registrar">Registrar Estudiante</a>
                 </nav>
             </div>
         </header>
         <hr style="width: 65rem;">
         <main class="py-5" style="text-align: center; width: 70%;">
 
-            <h3>Productos</h3>
+            <h3>Estudiantes</h3>
             <br>
             <table class="table table-bordered border-secondary" style="text-align: center; font-size: 0.9rem;">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Referencia</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Foto de Perfil</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody style="justify-content: center;">
 
-                    <% data.forEach((product)=>{ %>
+                    <% data.forEach((student)=>{ %>
                         <tr>
                             <th scope="row">
-                                <%= product.id %>
+                                <%= student.id %>
                             </th>
                             <td>
-                                <%= product.producto %>
+                                <%= student.nombre %>
                             </td>
                             <td>
-                                <%= product.marca %>
+                                <%= student.apellido %>
                             </td>
                             <td>
-                                <%= product.stock %>
+                                <%= student.fecha_nac %>
                             </td>
                             <td>
-                                <%= product.precio %>
+                                <%= student.email %>
                             </td>
                             <td>
 
-                                <img class="img-fluid" src='<%= product.img %>' alt="">
+                                <img class="img-fluid" src='<%= student.img %>' alt="">
 
                             </td>
                             <td>
@@ -152,7 +152,7 @@
 
                                     <div class="col-sm-2"></div>
                                     <div class="col-sm-4">
-                                        <form action="/product/<%= product.id %>" method="get" style="width: 2.2rem;">
+                                        <form action="/student/<%= student.id %>" method="get" style="width: 2.2rem;">
                                             <button type="submit" style="text-decoration: none; background-color: transparent; border: 0;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 18 18"
@@ -164,7 +164,7 @@
                                         </form>
                                     </div>
                                     <div class="col-sm-4">
-                                        <form action="/delete/product/<%= product.id %>" method="get" id="delete" style="width: 2.2rem;">
+                                        <form action="/delete/student/<%= student.id %>" method="get" id="delete" style="width: 2.2rem;">
                                             <button type="submit" style="text-decoration: none; background-color: transparent; border: 0;" tabindex="-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 18 18"

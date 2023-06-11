@@ -100,22 +100,22 @@
     <div class="cover-container d-flex w-100 h-10 p-5 flex-column">
         <header class="mb-auto" id="header">
             <div>
-                <h5 class="float-md-start" style="margin-right: 25rem;">Lab 11 - L. Baltazar</h5>
+                <h5 class="float-md-start" style="margin-right: 25rem;">Examen TEO 03 - L. Baltazar</h5>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="/">Inicio</a>
                     <a class="nav-link fw-bold py-1 px-0" href="/crud">Crud</a>
-                    <a class="nav-link fw-bold py-1 px-0" href="/registrar">Registrar Producto</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/registrar">Registrar Estudiante</a>
                 </nav>
             </div>
         </header>
         <hr style="width: 65rem;">
         <main style="display: contents;">
 
-            <h3 class="py-5">Editar Producto</h3>
+            <h3 class="py-5">Editar Estudiante</h3>
 
             <% if (data) { %>
 
-                <form action="/edit/product" method="POST" style="text-align: left; width: 50rem" enctype="multipart/form-data">
+                <form action="/edit/student" method="POST" style="text-align: left; width: 50rem" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="id" class="form-label">Id</label>
@@ -123,32 +123,31 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <label for="marca" class="form-label">Marca</label>
-                            <input type="text" class="form-control" value="<%= data.marca %>" id="marca" name="marca"
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" value="<%= data.nombre %>" id="nombre" name="nombre"
                                 required="">
                         </div>
 
                         <div class="col-12">
-                            <label for="producto" class="form-label">Producto</label>
-                            <input type="text" class="form-control" value="<%= data.producto %>" id="producto"
-                                name="producto" required="">
+                            <label for="apellido" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" value="<%= data.apellido %>" id="apellido"
+                                name="apellido" required="">
                         </div>
-                        <img src="" alt="">
                         <div class="col-12">
-                            <label for="img" class="form-label">Referencia del Producto (img)</label>
-                            <input type="file" class="form-control" value="<%= data.img %>" id="img" name="img">
+                            <label for="fecha_nac" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" value="<%= data.fecha_nac %>" id="fecha_nac" name="fecha_nac">
                         </div>
 
                         <div class="col-12">
-                            <label for="stock" class="form-label">Stock</label>
-                            <input type="number" class="form-control" value="<%= data.stock %>" id="stock" name="stock"
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" value="<%= data.email %>" id="email" name="email"
                                 required="">
                         </div>
 
                         <div class="col-12">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="number" class="form-control" value="<%= data.precio %>" id="precio"
-                                name="precio" required="" step="any">
+                            <label for="img" class="form-label">Foto de Perfil</label>
+                            <input type="file" class="form-control" value="<%= data.img %>" id="img"
+                                name="img" step="any">
 
                         </div>
 

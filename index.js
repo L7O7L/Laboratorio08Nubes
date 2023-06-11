@@ -5,7 +5,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url'; 
 import fileUpload from 'express-fileupload' 
 
-import products from './routes.js'
+import students from './routes.js'
 
 dotenv.config() 
 
@@ -32,7 +32,7 @@ app.get("/", (req, res)=>{
     res.sendFile(__dirname + '/templates/index.html')
 })
 
-app.use('/', products)
+app.use('/', students)
 
 const PORT = 3000
 
